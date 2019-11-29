@@ -83,7 +83,7 @@ elsOp.forEach( el => addOpListener(el.el, el.op) );
 
 const addNumListener = (el, num) => {
   document.querySelector(el).addEventListener("click", e => {
-    if(data.show === "0"){
+    if(data.show === "0" && num !== "."){
       data.show = "";
     }
     data.show += num;
