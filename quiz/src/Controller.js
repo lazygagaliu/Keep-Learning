@@ -5,9 +5,11 @@ class Controller {
 
     this.model.bindAddQuestionToDom(this.onQuestionsLoaded);
     this.model.bindChangeBtnState(this.onBtnStateChanged);
+    this.model.bindAnswerChecked(this.onAnsweredChecked);
+    this.model.bingChangeBtnText(this.onBtnTextChanged);
 
     this.view.bindCheckAnswer(this.handleCheckAnswer);
-    this.view.bindAnswerFinished(this.handleAnswerFinished);
+    this.view.bindAnswerFinished(this.handleAnswerFinished, this.handleResetQuestions);
   }
 
   onQuestionsLoaded = (question, leftNum, isFinished, correct) => {
@@ -15,16 +17,28 @@ class Controller {
     this.view.showLeftQuestion(leftNum);
   }
 
-  onBtnStateChanged = (goNext) => {
+  onBtnStateChanged = goNext => {
     this.view.changeBtnState(goNext);
   }
 
-  handleCheckAnswer = (id) => {
-    this.model.checkAnswer(id);
+  onAnsweredChecked = (el, result) => {
+    this.view.showRightorWrong(el, result);
+  }
+
+  onBtnTextChanged = () => {
+    this.view.changeBtnText();
+  }
+
+  handleCheckAnswer = (el, id) => {
+    this.model.checkAnswer(el, id);
   }
 
   handleAnswerFinished = () => {
     this.model.answerFinished();
+  }
+
+  handleResetQuestions = () => {
+    this.model.resetQuestions();
   }
 
 }

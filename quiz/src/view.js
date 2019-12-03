@@ -32,7 +32,7 @@ class View {
     return el;
   }
 
-  showQuestion = (question, isFinished, correct) => {
+  showQuestion(question, isFinished, correct){
     while (this.question.firstChild)
       this.question.removeChild(this.question.firstChild);
 
@@ -48,7 +48,7 @@ class View {
   }
 
 
-  showLeftQuestion = (leftNum) => {
+  showLeftQuestion(leftNum){
     if(!this.left){
       this.left = this.createElement("div", {className: "left", textContent: `Left Questions: ${leftNum}`}, this.status);
     }else {
@@ -56,20 +56,45 @@ class View {
     }
   }
 
+  showRightorWrong(el, result){
+    el.classList.add(result);
+  }
+
   changeBtnState(goNext){
     this.btn.disabled = !goNext;
   }
 
+  changeBtnText(){
+    if(this.btn.textContent === "Back"){
+      this.btn.textContent = "Next";
+    }else{
+      this.btn.textContent = "Back";
+    }
+  }
+
   bindCheckAnswer(handler){
     this.question.addEventListener("click", e => {
-      handler(e.target.value);
+      if(!e.target.value) return;
+      handler(e.target, e.target.value);
     });
   }
 
-  bindAnswerFinished(handler){
+  bindAnswerFinished(NextQuestionHandler, resetHandler){
     this.btn.addEventListener("click", e => {
-      handler();
+      if(this.checkFinished(e.target.textContent)){
+        NextQuestionHandler();
+      }else {
+        resetHandler();
+      }
     });
+  }
+
+  checkFinished(text){
+    if(text === "Next"){
+      return true;
+    }else {
+      return false;
+    }
   }
 
 }

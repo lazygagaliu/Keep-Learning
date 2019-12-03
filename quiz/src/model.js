@@ -11,14 +11,24 @@ class Model {
 
     this.goNext = false;
     this.isFinished = false;
+
   }
 
-  checkAnswer(id){
+  checkAnswer(el, id){
     this.goNext = true;
-    const correctId = this.questions[this.currentQuestionId].correct;
     this.onBtnStateChanged(this.goNext);
-    if(id !== correctId) return;
-    this.correct ++;
+    const result = this.getAnsweredResult(id);
+    this.onAnsweredChecked(el, result);
+  }
+
+  getAnsweredResult(id){
+    const correctId = this.questions[this.currentQuestionId].correct;
+    if(id !== correctId){
+      return "wrong";
+    }else{
+      this.correct ++;
+      return "right";
+    }
   }
 
   answerFinished(){
@@ -26,13 +36,24 @@ class Model {
     this.currentQuestionId ++;
     this.leftNum --;
     if(this.currentQuestionId > 3){
-      console.log("Finished");
+      this.goNext = true;
       this.isFinished = true;
+      this.onBtnTextChanged();
     }
     this.onBtnStateChanged(this.goNext);
     this.onQuestionsLoaded(this.questions[this.currentQuestionId], this.leftNum, this.isFinished, this.correct);
   }
 
+  resetQuestions(){
+    this.currentQuestionId = 0;
+    this.leftNum = this.questions.length;
+    this.correct = 0;
+    this.goNext = false;
+    this.isFinished = false;
+    this.onBtnTextChanged();
+    this.onBtnStateChanged(this.goNext);
+    this.onQuestionsLoaded(this.questions[this.currentQuestionId], this.leftNum, this.isFinished, this.correct);
+  }
 
   bindAddQuestionToDom(callback){
     this.onQuestionsLoaded = callback;
@@ -40,6 +61,14 @@ class Model {
 
   bindChangeBtnState(callback){
     this.onBtnStateChanged = callback;
+  }
+
+  bindAnswerChecked(callback){
+    this.onAnsweredChecked = callback;
+  }
+
+  bingChangeBtnText(callback){
+    this.onBtnTextChanged = callback;
   }
 
 
