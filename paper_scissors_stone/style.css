@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: sans-serif;
+  font-size: 28px;
+  background: #00cbb5;
+}
+
+#app {
+  margin: 0px auto;
+  width: 100%;
+  max-width: 1280px;
+  text-align: center;
+  position: relative;
+}
+#app h2 {
+  margin: 0px;
+  padding: 30px 0px;
+}
+#app h3 {
+  font-family: cursive;
+}
+#app .records, #app .options {
+  display: flex;
+  max-width: 80%;
+  align-items: center;
+  margin: 60px auto;
+}
+#app .records {
+  justify-content: space-around;
+}
+#app .options {
+  justify-content: space-between;
+}
+#app .options .selected {
+  border: 3px solid #e29e38;
+  padding: 15px;
+  border-radius: 20px;
+}
+#app .ai-options * {
+  margin: 20px 0px;
+}
+#app .result-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(10, 10, 10, 0.8);
+}
+#app .result-wrapper .result {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 10px 6px #eee;
+  border-radius: 15px;
+}
+#app .result-wrapper .result p {
+  font-size: 50px;
+  color: red;
+}
+#app .result-wrapper .result div {
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #40a0db;
+  box-shadow: 0px 0px 8px 8px #2685bf;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

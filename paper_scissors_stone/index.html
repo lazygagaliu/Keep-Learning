@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Paper, Scissors, Stone</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div id="app">
+      <h2>Game Time!</h2>
+      <h3>Paper, Scissors, Stone</h3>
+
+      <div class="records">
+        <div class="record">You win: <span id="playerRecord">0 </span>/ 10</div>
+        <div class="record">AI wins: <span id="aiRecord">0 </span>/ 10</div>
+      </div>
+
+      <div class="options">
+        <img id="paper" class="option" src="asset/paper.png" />
+        <img id="scissors" class="option" src="asset/scissors.png" />
+        <img id="stone" class="option" src="asset/stone.png" />
+      </div>
+
+      <div class="ai-options">
+        <div>↓ AI's choice ↓</div>
+        <img class="ai-option" src="" />
+      </div>
+
+      <div class="result-wrapper">
+        <div class="result">
+          <p></p>
+          <div id="reset">Play Again</div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
