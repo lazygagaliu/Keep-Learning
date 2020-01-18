@@ -1,4 +1,4 @@
-import View from "./src/View.js";
+import View from "./src/view.js";
 
 class App {
   constructor(view){
