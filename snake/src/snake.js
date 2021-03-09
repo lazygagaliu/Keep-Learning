@@ -29,7 +29,7 @@ class Snake {
   update = () => {
     requestAnimationFrame(this.update);
 
-    if(++this.count < 4) return;
+    if(++this.count < 4 || this.gameover) return;
     this.count = 0;
 
     this.clearCanvas();
