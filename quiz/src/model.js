@@ -1,6 +1,6 @@
 class Model {
   constructor () {
-    fetch("../asset/questions.json").then(res => res.json()).then(res => {
+    fetch("asset/questions.json").then(res => res.json()).then(res => {
       this.questions = res.questions;
       this.leftNum = this.questions.length;
       this.onQuestionsLoaded(this.questions[this.currentQuestionId], this.leftNum);
